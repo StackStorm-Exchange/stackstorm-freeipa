@@ -1,0 +1,30 @@
+---
+connections:
+  type: "object"
+  required: true
+  patternProperties:
+      "^\\w+":
+        "$ref": "#/properties/connection"
+  additionalProperties: false
+
+connection:
+  type: "object"
+  properties:
+    server:
+      type: string
+      description: "IP/Hostname of the FreeIPA server"
+      required: true
+    username:
+      type: string
+      description: "Username to login to the FreeIPA server"
+      required: true
+    password:
+      type: string
+      description: "Password to login to the FreeIPA server"
+      required: true
+      secret: true
+    verify_ssl:
+      type: boolean
+      description: "Verify SSL certificates on the server"
+      default: true
+  additionalProperties: false
