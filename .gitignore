@@ -106,3 +106,12 @@ ci/
 
 # FreeIPA
 etc/freeipa
+
+# Mr Developer
+.idea
+.DS_Store
+._*
+.vscode
+*.sublime-project
+*.sublime-workspace# PyCharm
+.idea

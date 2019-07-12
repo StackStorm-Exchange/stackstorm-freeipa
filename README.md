@@ -1,4 +1,4 @@
-[![Build Status](https://circleci.com/gh/EncoreTechnologies/stackstorm-freeipa.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/EncoreTechnologies/stackstorm-freeipa) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Build Status](https://circleci.com/gh/StackStorm-Exchange/stackstorm-freeipa.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/StackStorm-Exchange/stackstorm-freeipa) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # FreeIPA Integration Pack
 
@@ -10,7 +10,7 @@ Data types and payloads also mirror one-for-one.
 # <a name="QuickStart"></a> Quick Start
 1. Currently this pack is in incubation, so installation must be performed from the github page:
   ``` shell
-  st2 pack install https://github.com/EncoreTechnologies/stackstorm-freeipa.git
+  st2 pack install freeipa
   ```
 2. Execute an action (example: add a new host)
   ``` shell
@@ -216,7 +216,7 @@ result:
   exit_code: 0
   result:
     id: 0
-    principal: administrator@IPA.DEV.ENCORE.TECH
+    principal: administrator@IPA.DOMAIN.TLD
     result: null
     version: 4.5.0
   stderr: ''
@@ -318,7 +318,7 @@ result:
   exit_code: 0
   result:
     id: 0
-    principal: administrator@IPA.DEV.ENCORE.TECH
+    principal: administrator@IPA.DOMAIN.TLD
     result: null
     version: 4.5.0
   stderr: ''
@@ -362,7 +362,7 @@ result:
   exit_code: 0
   result:
     id: 0
-    principal: administrator@IPA.DEV.ENCORE.TECH
+    principal: administrator@IPA.DOMAIN.TLD
     result: null
     version: 4.5.0
   stderr: ''
