@@ -137,8 +137,10 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         headers = {"referer": 'https://{0}/ipa'.format(connection['server']),
                    "Content-Type": "application/x-www-form-urlencoded",
                    "Accept": "text/plain"}
-        payload = 'user={0}&password={1}'.format(connection['username'],
-                                                 connection['password'])
+        data = {
+            'user': connection['username'],
+            'password': connection['password']
+        }
 
         # execute
         result = action._login(connection)
@@ -146,7 +148,7 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         # verify
         mock_session.post.assert_called_with(url,
                                              headers=headers,
-                                             data=payload)
+                                             data=data)
         self.assertEqual(result, expected_session)
 
     def test__login_error(self):
@@ -165,8 +167,10 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         headers = {"referer": 'https://{0}/ipa'.format(connection['server']),
                    "Content-Type": "application/x-www-form-urlencoded",
                    "Accept": "text/plain"}
-        payload = 'user={0}&password={1}'.format(connection['username'],
-                                                 connection['password'])
+        data = {
+            'user': connection['username'],
+            'password': connection['password']
+        }
 
         # execute
         with self.assertRaises(RuntimeError):
@@ -175,7 +179,7 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         # verify
         mock_session.post.assert_called_with(url,
                                              headers=headers,
-                                             data=payload)
+                                             data=data)
 
     def test__login_http_error(self):
         # setup
@@ -193,8 +197,10 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         headers = {"referer": 'https://{0}/ipa'.format(connection['server']),
                    "Content-Type": "application/x-www-form-urlencoded",
                    "Accept": "text/plain"}
-        payload = 'user={0}&password={1}'.format(connection['username'],
-                                                 connection['password'])
+        data = {
+            'user': connection['username'],
+            'password': connection['password']
+        }
 
         # execute
         with self.assertRaises(requests.HTTPError):
@@ -203,7 +209,7 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         # verify
         mock_session.post.assert_called_with(url,
                                              headers=headers,
-                                             data=payload)
+                                             data=data)
 
     def test__create_payload(self):
         action = self.get_action_instance(self.config_good)

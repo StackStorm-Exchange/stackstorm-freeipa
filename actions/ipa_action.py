@@ -128,11 +128,17 @@ class IpaAction(Action):
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "text/plain"
         }
-        payload = "user={0}&password={1}".format(username, password)
-
+        # pass this in as a dictionary so the username and password are URL encoded
+        # into a query string appropriate for application/x-www-form-urlencoded
+        # this will also escape any special characters in the username or password
+        # with URL encoding semantics
+        data = {
+            'user': username,
+            'password': password
+        }
         response = self.session.post(url,
                                      headers=headers,
-                                     data=payload)
+                                     data=data)
         self._raise_for_status(response)
 
         session = ''
