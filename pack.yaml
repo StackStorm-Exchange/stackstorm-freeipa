@@ -3,13 +3,13 @@ ref: freeipa
 name: freeipa
 description: FreeIPA Integration Pack
 keywords: 
-    - freeipa
-    - ipa
-    - idm
-    - redhat
-    - red
-    - hat
-    - authentication
+  - freeipa
+  - ipa
+  - idm
+  - redhat
+  - red
+  - hat
+  - authentication
 version: 0.1.1
 author: Encore Technologies
 email: code@encore.tech
