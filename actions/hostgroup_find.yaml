@@ -42,6 +42,14 @@ parameters:
     type: array
     items:
       type: string
+  membermanager_group:
+    type: array
+    items:
+      type: string
+  membermanager_user:
+    type: array
+    items:
+      type: string
   no_host:
     type: array
     items:
@@ -67,6 +75,14 @@ parameters:
     items:
       type: string
   not_in_sudorule:
+    type: array
+    items:
+      type: string
+  not_membermanager_group:
+    type: array
+    items:
+      type: string
+  not_membermanager_user:
     type: array
     items:
       type: string

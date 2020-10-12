@@ -35,6 +35,7 @@ parameters:
       - permission
       - all
       - anonymous
+      - self
 
   ipapermdefaultattr:
     type: array

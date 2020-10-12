@@ -64,6 +64,42 @@ parameters:
       type: string
   initials:
     type: string
+  ipanthomedirectory:
+    type: string
+  ipanthomedirectorydrive:
+    type: string
+    enum:
+      - 'A:'
+      - 'B:'
+      - 'C:'
+      - 'D:'
+      - 'E:'
+      - 'F:'
+      - 'G:'
+      - 'H:'
+      - 'I:'
+      - 'J:'
+      - 'K:'
+      - 'L:'
+      - 'M:'
+      - 'N:'
+      - 'O:'
+      - 'P:'
+      - 'Q:'
+      - 'R:'
+      - 'S:'
+      - 'T:'
+      - 'U:'
+      - 'V:'
+      - 'W:'
+      - 'X:'
+      - 'Y:'
+      - 'Z:'
+
+  ipantlogonscript:
+    type: string
+  ipantprofilepath:
+    type: string
   ipatokenradiusconfiglink:
     type: string
   ipatokenradiususername:
@@ -74,6 +110,8 @@ parameters:
       - password
       - radius
       - otp
+      - pkinit
+      - hardened
 
     items:
       type: string

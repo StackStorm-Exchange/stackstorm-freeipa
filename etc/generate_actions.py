@@ -44,6 +44,7 @@ IPA_TYPE_TO_STACKSTORM_TYPE = {
     "Entry": None,
     "Flag": "boolean",
     "HIPRecord": "string",
+    "HostPassword": "string",
     "IA5Str": "string",
     "IPSECKEYRecord": "string",
     "Int": "integer",

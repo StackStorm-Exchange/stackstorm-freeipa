@@ -46,6 +46,12 @@ parameters:
     type: string
   krbprincipalauthind:
     type: array
+    enum:
+      - radius
+      - otp
+      - pkinit
+      - hardened
+
     items:
       type: string
   l:
@@ -124,8 +130,6 @@ parameters:
     type: array
     items:
       type: string
-  userpassword:
-    type: string
   version:
     type: string
 ############################################################################

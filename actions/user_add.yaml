@@ -66,6 +66,8 @@ parameters:
       - password
       - radius
       - otp
+      - pkinit
+      - hardened
 
     items:
       type: string

@@ -57,6 +57,8 @@ parameters:
 
     items:
       type: string
+  ipamaxhostnamelength:
+    type: integer
   ipamaxusernamelength:
     type: integer
   ipamigrationenabled:
@@ -77,6 +79,8 @@ parameters:
       - password
       - radius
       - otp
+      - pkinit
+      - hardened
       - disabled
 
     items:

@@ -44,6 +44,10 @@ parameters:
       type: string
   loginshell:
     type: string
+  no_members:
+    type: boolean
+    required: true
+    default: False
   raw:
     type: boolean
     required: true

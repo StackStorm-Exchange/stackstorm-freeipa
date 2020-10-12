@@ -3,124 +3,28 @@ description: ""
 enabled: true
 runner_type: "python-script"
 entry_point: ipa_action.py
-name: group_find
+name: service_add_smb
 pack: freeipa
 parameters:
 ############################################################################
 # begin unique params for this action
-  criteria:
+  fqdn:
     type: string
+  ipantflatname:
+    type: string
+  addattr:
+    type: array
+    items:
+      type: string
   all:
     type: boolean
     required: true
     default: False
-  cn:
-    type: string
-  description:
-    type: string
-  external:
+  ipakrbokasdelegate:
     type: boolean
-    required: true
-    default: False
-  gidnumber:
-    type: integer
-  group:
-    type: array
-    items:
-      type: string
-  idoverrideuser:
-    type: array
-    items:
-      type: string
-  in_group:
-    type: array
-    items:
-      type: string
-  in_hbacrule:
-    type: array
-    items:
-      type: string
-  in_netgroup:
-    type: array
-    items:
-      type: string
-  in_role:
-    type: array
-    items:
-      type: string
-  in_sudorule:
-    type: array
-    items:
-      type: string
-  membermanager_group:
-    type: array
-    items:
-      type: string
-  membermanager_user:
-    type: array
-    items:
-      type: string
-  no_group:
-    type: array
-    items:
-      type: string
-  no_idoverrideuser:
-    type: array
-    items:
-      type: string
+  ipakrboktoauthasdelegate:
+    type: boolean
   no_members:
-    type: boolean
-    required: true
-    default: True
-  no_service:
-    type: array
-    items:
-      type: string
-  no_user:
-    type: array
-    items:
-      type: string
-  nonposix:
-    type: boolean
-    required: true
-    default: False
-  not_in_group:
-    type: array
-    items:
-      type: string
-  not_in_hbacrule:
-    type: array
-    items:
-      type: string
-  not_in_netgroup:
-    type: array
-    items:
-      type: string
-  not_in_role:
-    type: array
-    items:
-      type: string
-  not_in_sudorule:
-    type: array
-    items:
-      type: string
-  not_membermanager_group:
-    type: array
-    items:
-      type: string
-  not_membermanager_user:
-    type: array
-    items:
-      type: string
-  pkey_only:
-    type: boolean
-    required: true
-    default: False
-  posix:
-    type: boolean
-    required: true
-    default: False
-  private:
     type: boolean
     required: true
     default: False
@@ -128,15 +32,11 @@ parameters:
     type: boolean
     required: true
     default: False
-  service:
+  setattr:
     type: array
     items:
       type: string
-  sizelimit:
-    type: integer
-  timelimit:
-    type: integer
-  user:
+  usercertificate:
     type: array
     items:
       type: string
@@ -147,7 +47,7 @@ parameters:
   method:
     type: string
     description: "Name of IPA command to be executed."
-    default: "group_find"
+    default: "service_add_smb"
     immutable: true
 ############################################################################
 # begin connection params
