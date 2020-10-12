@@ -39,6 +39,12 @@ parameters:
     type: boolean
   krbprincipalauthind:
     type: array
+    enum:
+      - radius
+      - otp
+      - pkinit
+      - hardened
+
     items:
       type: string
   no_members:

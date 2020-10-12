@@ -32,6 +32,8 @@ parameters:
     type: boolean
     required: true
     default: False
+  rename:
+    type: string
   rights:
     type: boolean
     required: true

@@ -38,6 +38,7 @@ parameters:
       - permission
       - all
       - anonymous
+      - self
 
   ipapermlocation:
     type: string

@@ -56,7 +56,7 @@ parameters:
   groupobjectclass:
     type: string
     required: true
-    default: ['groupOfUniqueNames', 'groupOfNames']
+    default: [u'groupOfUniqueNames', u'groupOfNames']
   groupoverwritegid:
     type: boolean
     required: true
@@ -99,7 +99,7 @@ parameters:
   userobjectclass:
     type: string
     required: true
-    default: ['person']
+    default: [u'person']
   version:
     type: string
 ############################################################################

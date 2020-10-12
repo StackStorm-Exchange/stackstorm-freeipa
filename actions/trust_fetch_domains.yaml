@@ -18,6 +18,11 @@ parameters:
     type: boolean
     required: true
     default: False
+  realm_admin:
+    type: string
+  realm_passwd:
+    type: string
+    secret: True
   realm_server:
     type: string
   rights:

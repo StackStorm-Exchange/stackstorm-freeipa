@@ -3,113 +3,17 @@ description: ""
 enabled: true
 runner_type: "python-script"
 entry_point: ipa_action.py
-name: permission_mod
+name: trust_enable_agent
 pack: freeipa
 parameters:
 ############################################################################
 # begin unique params for this action
-  cn:
+  remote_cn:
     type: string
-  addattr:
-    type: array
-    items:
-      type: string
-  all:
+  enable_compat:
     type: boolean
     required: true
     default: False
-  attrs:
-    type: array
-    items:
-      type: string
-  delattr:
-    type: array
-    items:
-      type: string
-  extratargetfilter:
-    type: array
-    items:
-      type: string
-  filter:
-    type: array
-    items:
-      type: string
-  ipapermbindruletype:
-    type: string
-    default: permission
-    enum:
-      - permission
-      - all
-      - anonymous
-      - self
-
-  ipapermexcludedattr:
-    type: array
-    items:
-      type: string
-  ipapermincludedattr:
-    type: array
-    items:
-      type: string
-  ipapermlocation:
-    type: string
-  ipapermright:
-    type: array
-    enum:
-      - read
-      - search
-      - compare
-      - write
-      - add
-      - delete
-      - all
-
-    items:
-      type: string
-  ipapermtarget:
-    type: string
-  ipapermtargetfilter:
-    type: array
-    items:
-      type: string
-  ipapermtargetfrom:
-    type: string
-  ipapermtargetto:
-    type: string
-  memberof:
-    type: array
-    items:
-      type: string
-  no_members:
-    type: boolean
-    required: true
-    default: False
-  permissions:
-    type: array
-    items:
-      type: string
-  raw:
-    type: boolean
-    required: true
-    default: False
-  rename:
-    type: string
-  rights:
-    type: boolean
-    required: true
-    default: False
-  setattr:
-    type: array
-    items:
-      type: string
-  subtree:
-    type: array
-    items:
-      type: string
-  targetgroup:
-    type: string
-  type:
-    type: string
   version:
     type: string
 ############################################################################
@@ -117,7 +21,7 @@ parameters:
   method:
     type: string
     description: "Name of IPA command to be executed."
-    default: "permission_mod"
+    default: "trust_enable_agent"
     immutable: true
 ############################################################################
 # begin connection params

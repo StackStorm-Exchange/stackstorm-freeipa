@@ -1183,6 +1183,7 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "ipagroupsearchfields",
             "ipahomesrootdir",
             "ipakrbauthzdata",
+            "ipamaxhostnamelength",
             "ipamaxusernamelength",
             "ipamigrationenabled",
             "ipapwdexpadvnotify",
@@ -2107,10 +2108,24 @@ IPA_COMMAND_ARGS_OPTIONS = {
         "options": [
             "all",
             "group",
+            "idoverrideuser",
             "ipaexternalmember",
             "no_members",
             "raw",
             "service",
+            "user",
+            "version",
+        ]
+    },
+    "group_add_member_manager": {
+        "args": [
+            "cn",
+        ],
+        "options": [
+            "all",
+            "group",
+            "no_members",
+            "raw",
             "user",
             "version",
         ]
@@ -2143,12 +2158,16 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "external",
             "gidnumber",
             "group",
+            "idoverrideuser",
             "in_group",
             "in_hbacrule",
             "in_netgroup",
             "in_role",
             "in_sudorule",
+            "membermanager_group",
+            "membermanager_user",
             "no_group",
+            "no_idoverrideuser",
             "no_members",
             "no_service",
             "no_user",
@@ -2158,6 +2177,8 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "not_in_netgroup",
             "not_in_role",
             "not_in_sudorule",
+            "not_membermanager_group",
+            "not_membermanager_user",
             "pkey_only",
             "posix",
             "private",
@@ -2196,10 +2217,24 @@ IPA_COMMAND_ARGS_OPTIONS = {
         "options": [
             "all",
             "group",
+            "idoverrideuser",
             "ipaexternalmember",
             "no_members",
             "raw",
             "service",
+            "user",
+            "version",
+        ]
+    },
+    "group_remove_member_manager": {
+        "args": [
+            "cn",
+        ],
+        "options": [
+            "all",
+            "group",
+            "no_members",
+            "raw",
             "user",
             "version",
         ]
@@ -2783,7 +2818,6 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "timelimit",
             "usercertificate",
             "userclass",
-            "userpassword",
             "version",
         ]
     },
@@ -2896,6 +2930,19 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "version",
         ]
     },
+    "hostgroup_add_member_manager": {
+        "args": [
+            "cn",
+        ],
+        "options": [
+            "all",
+            "group",
+            "no_members",
+            "raw",
+            "user",
+            "version",
+        ]
+    },
     "hostgroup_del": {
         "args": [
             "cn",
@@ -2919,6 +2966,8 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "in_hostgroup",
             "in_netgroup",
             "in_sudorule",
+            "membermanager_group",
+            "membermanager_user",
             "no_host",
             "no_hostgroup",
             "no_members",
@@ -2926,6 +2975,8 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "not_in_hostgroup",
             "not_in_netgroup",
             "not_in_sudorule",
+            "not_membermanager_group",
+            "not_membermanager_user",
             "pkey_only",
             "raw",
             "sizelimit",
@@ -2944,6 +2995,7 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "description",
             "no_members",
             "raw",
+            "rename",
             "rights",
             "setattr",
             "version",
@@ -2959,6 +3011,19 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "hostgroup",
             "no_members",
             "raw",
+            "version",
+        ]
+    },
+    "hostgroup_remove_member_manager": {
+        "args": [
+            "cn",
+        ],
+        "options": [
+            "all",
+            "group",
+            "no_members",
+            "raw",
+            "user",
             "version",
         ]
     },
@@ -3077,6 +3142,7 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "ipaoriginaluid",
             "ipasshpubkey",
             "loginshell",
+            "no_members",
             "raw",
             "setattr",
             "uid",
@@ -3093,6 +3159,7 @@ IPA_COMMAND_ARGS_OPTIONS = {
         "options": [
             "all",
             "fallback_to_ldap",
+            "no_members",
             "raw",
             "usercertificate",
             "version",
@@ -3124,6 +3191,7 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "ipaanchoruuid",
             "ipaoriginaluid",
             "loginshell",
+            "no_members",
             "pkey_only",
             "raw",
             "sizelimit",
@@ -3150,6 +3218,7 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "ipaoriginaluid",
             "ipasshpubkey",
             "loginshell",
+            "no_members",
             "raw",
             "rename",
             "rights",
@@ -3168,6 +3237,7 @@ IPA_COMMAND_ARGS_OPTIONS = {
         "options": [
             "all",
             "fallback_to_ldap",
+            "no_members",
             "raw",
             "usercertificate",
             "version",
@@ -3181,6 +3251,7 @@ IPA_COMMAND_ARGS_OPTIONS = {
         "options": [
             "all",
             "fallback_to_ldap",
+            "no_members",
             "raw",
             "rights",
             "version",
@@ -3389,6 +3460,14 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "addattr",
             "all",
             "delattr",
+            "krbauthindmaxrenewableage_hardened",
+            "krbauthindmaxrenewableage_otp",
+            "krbauthindmaxrenewableage_pkinit",
+            "krbauthindmaxrenewableage_radius",
+            "krbauthindmaxticketlife_hardened",
+            "krbauthindmaxticketlife_otp",
+            "krbauthindmaxticketlife_pkinit",
+            "krbauthindmaxticketlife_radius",
             "krbmaxrenewableage",
             "krbmaxticketlife",
             "raw",
@@ -4362,6 +4441,7 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "group",
             "host",
             "hostgroup",
+            "idoverrideuser",
             "no_members",
             "raw",
             "service",
@@ -4432,6 +4512,7 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "group",
             "host",
             "hostgroup",
+            "idoverrideuser",
             "no_members",
             "raw",
             "service",
@@ -4776,6 +4857,15 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "version",
         ]
     },
+    "server_state": {
+        "args": [
+            "cn",
+        ],
+        "options": [
+            "state",
+            "version",
+        ]
+    },
     "service_add": {
         "args": [
             "krbcanonicalname",
@@ -4830,6 +4920,23 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "all",
             "no_members",
             "raw",
+            "version",
+        ]
+    },
+    "service_add_smb": {
+        "args": [
+            "fqdn",
+            "ipantflatname",
+        ],
+        "options": [
+            "addattr",
+            "all",
+            "ipakrbokasdelegate",
+            "ipakrboktoauthasdelegate",
+            "no_members",
+            "raw",
+            "setattr",
+            "usercertificate",
             "version",
         ]
     },
@@ -5326,6 +5433,10 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "in_role",
             "in_sudorule",
             "initials",
+            "ipanthomedirectory",
+            "ipanthomedirectorydrive",
+            "ipantlogonscript",
+            "ipantprofilepath",
             "ipatokenradiusconfiglink",
             "ipatokenradiususername",
             "ipauserauthtype",
@@ -5384,6 +5495,10 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "givenname",
             "homedirectory",
             "initials",
+            "ipanthomedirectory",
+            "ipanthomedirectorydrive",
+            "ipantlogonscript",
+            "ipantprofilepath",
             "ipasshpubkey",
             "ipatokenradiusconfiglink",
             "ipatokenradiususername",
@@ -6157,6 +6272,15 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "version",
         ]
     },
+    "trust_enable_agent": {
+        "args": [
+            "remote_cn",
+        ],
+        "options": [
+            "enable_compat",
+            "version",
+        ]
+    },
     "trust_fetch_domains": {
         "args": [
             "cn",
@@ -6164,6 +6288,8 @@ IPA_COMMAND_ARGS_OPTIONS = {
         "options": [
             "all",
             "raw",
+            "realm_admin",
+            "realm_passwd",
             "realm_server",
             "rights",
             "version",
@@ -6483,6 +6609,10 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "in_role",
             "in_sudorule",
             "initials",
+            "ipanthomedirectory",
+            "ipanthomedirectorydrive",
+            "ipantlogonscript",
+            "ipantprofilepath",
             "ipatokenradiusconfiglink",
             "ipatokenradiususername",
             "ipauserauthtype",
@@ -6544,6 +6674,10 @@ IPA_COMMAND_ARGS_OPTIONS = {
             "givenname",
             "homedirectory",
             "initials",
+            "ipanthomedirectory",
+            "ipanthomedirectorydrive",
+            "ipantlogonscript",
+            "ipantprofilepath",
             "ipasshpubkey",
             "ipatokenradiusconfiglink",
             "ipatokenradiususername",

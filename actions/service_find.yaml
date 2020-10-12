@@ -27,6 +27,12 @@ parameters:
     type: string
   krbprincipalauthind:
     type: array
+    enum:
+      - radius
+      - otp
+      - pkinit
+      - hardened
+
     items:
       type: string
   krbprincipalname:

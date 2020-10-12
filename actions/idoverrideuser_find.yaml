@@ -34,6 +34,10 @@ parameters:
     type: string
   loginshell:
     type: string
+  no_members:
+    type: boolean
+    required: true
+    default: True
   pkey_only:
     type: boolean
     required: true
