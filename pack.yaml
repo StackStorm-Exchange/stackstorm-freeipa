@@ -10,7 +10,7 @@ keywords:
   - red
   - hat
   - authentication
-version: 0.1.2
+version: 0.2.0
 author: Encore Technologies
 email: code@encore.tech
 python_versions:

@@ -1,6 +1,6 @@
 # Change Log
 
-## v0.1.2
+## v0.2.0
 
 * Updated actions with the generate_actions.py script and the 4.8.9 API spec
 
