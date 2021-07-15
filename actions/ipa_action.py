@@ -150,10 +150,10 @@ class IpaAction(Action):
         self.logger.debug('Successfully logged in as {0}'.format(username))
         return session
 
-    def _create_payload(self, ipa_method, api_version=None, **kwargs):
+    def _create_payload(self, method, api_version=None, **kwargs):
         # lookup kwargs are in args vs options based on the auto-generated
         # data, in IPA_COMMAND_ARGS_OPTIONS (this gets generated from etc/generate_actions.py)
-        method_args_options = IPA_COMMAND_ARGS_OPTIONS[ipa_method]
+        method_args_options = IPA_COMMAND_ARGS_OPTIONS[method]
 
         # args go into an array
         args = []
@@ -173,7 +173,7 @@ class IpaAction(Action):
 
         payload = {
             "id": 0,
-            "method": ipa_method,
+            "method": method,
             "params": [
                 args,
                 options
