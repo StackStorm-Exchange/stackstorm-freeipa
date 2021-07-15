@@ -56,7 +56,7 @@ parameters:
   groupobjectclass:
     type: string
     required: true
-    default: [u'groupOfUniqueNames', u'groupOfNames']
+    default: ['groupOfUniqueNames', 'groupOfNames']
   groupoverwritegid:
     type: boolean
     required: true
@@ -99,12 +99,12 @@ parameters:
   userobjectclass:
     type: string
     required: true
-    default: [u'person']
+    default: ['person']
   version:
     type: string
 ############################################################################
 # begin static invocation params
-  method:
+  ipa_method:
     type: string
     description: "Name of IPA command to be executed."
     default: "migrate_ds"
@@ -120,15 +120,15 @@ parameters:
     type: string
     description: "Name of <connection> from this pack's configuration that specifies how to connect to a IPA server."
     required: false
-  server:
+  ipa_server:
     type: string
     description: "Optional override of the IPA server in <connection> (required if <connection> is not specified)."
     required: false
-  username:
+  ipa_username:
     type: string
     description: "Optional override of the IPA username in <connection> (example: username@domain.tld) (required if <connection> is not specified)."
     required: false
-  password:
+  ipa_password:
     type: string
     description: "Optional override of the IPA password in <connection>. (required if <connection> is not specified)"
     required: false

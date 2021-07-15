@@ -10,9 +10,9 @@ urllib3.disable_warnings()
 requests.packages.urllib3.disable_warnings()  # pylint: disable=no-member
 
 CONNECTION_OPTIONS = [
-    'server',
-    'username',
-    'password',
+    'ipa_server',
+    'ipa_username',
+    'ipa_password',
     'verify_ssl',
 ]
 
@@ -118,9 +118,9 @@ class IpaAction(Action):
         :returns: login session token upon successful login
         :rtype: string
         """
-        server = connection['server']
-        username = connection['username']
-        password = connection['password']
+        server = connection['ipa_server']
+        username = connection['ipa_username']
+        password = connection['ipa_password']
 
         url = self._ipa_url(server, '/session/login_password')
         headers = {
@@ -150,10 +150,10 @@ class IpaAction(Action):
         self.logger.debug('Successfully logged in as {0}'.format(username))
         return session
 
-    def _create_payload(self, method, api_version=None, **kwargs):
+    def _create_payload(self, ipa_method, api_version=None, **kwargs):
         # lookup kwargs are in args vs options based on the auto-generated
         # data, in IPA_COMMAND_ARGS_OPTIONS (this gets generated from etc/generate_actions.py)
-        method_args_options = IPA_COMMAND_ARGS_OPTIONS[method]
+        method_args_options = IPA_COMMAND_ARGS_OPTIONS[ipa_method]
 
         # args go into an array
         args = []
@@ -173,7 +173,7 @@ class IpaAction(Action):
 
         payload = {
             "id": 0,
-            "method": method,
+            "method": ipa_method,
             "params": [
                 args,
                 options
@@ -233,18 +233,18 @@ class IpaAction(Action):
         connection = self._resolve_connection(**kwargs)
         self._validate_connection(connection)
         self.session.verify = connection['verify_ssl']
-        method = kwargs['method']
+        method = kwargs['ipa_method']
 
         if 'session' in kwargs and kwargs['session']:
-            server = kwargs['server']
+            server = kwargs['ipa_server']
             session = kwargs['session']
         else:
-            server = connection['server']
+            server = connection['ipa_server']
             session = self._login(connection)
 
-        del kwargs['server']
+        del kwargs['ipa_server']
         del kwargs['session']
-        del kwargs['method']
+        del kwargs['ipa_method']
         del kwargs['verify_ssl']
 
         if method == 'login':
