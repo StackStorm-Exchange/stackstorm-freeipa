@@ -28,8 +28,9 @@ parameters:
     type: boolean
     required: true
     default: False
-  username:
-    type: string
+  # TODO: duplicate param
+  #username:
+  #  type: string
   vault_data:
     type: string
   version:

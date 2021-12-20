@@ -52,8 +52,9 @@ parameters:
     type: integer
   timelimit:
     type: integer
-  username:
-    type: string
+  # TODO: duplicate param
+  #username:
+  #  type: string
   users:
     type: boolean
     required: true

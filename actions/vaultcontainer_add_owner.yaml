@@ -38,8 +38,9 @@ parameters:
     type: array
     items:
       type: string
-  username:
-    type: string
+  # TODO: duplicate param
+  #username:
+  #  type: string
   version:
     type: string
 ############################################################################
