@@ -3,14 +3,14 @@ verify_ssl: false
 
 connections:
   default:
-    server: "ipa1.dev.domain.tld"
-    username: "devusername"
-    password: "devpassword"
+    ipa_server: "ipa1.dev.domain.tld"
+    ipa_username: "devusername"
+    ipa_password: "devpassword"
   qa:
-    server: "ipa1.qa.domain.tld"
-    username: "qausername"
-    password: "qapassword"
+    ipa_server: "ipa1.qa.domain.tld"
+    ipa_username: "qausername"
+    ipa_password: "qapassword"
   prod:
-    server: "ipa1.prod.domain.tld"
-    username: "produsername"
-    password: "prodpassword"
+    ipa_server: "ipa1.prod.domain.tld"
+    ipa_username: "produsername"
+    ipa_password: "prodpassword"

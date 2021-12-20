@@ -1,5 +1,11 @@
 # Change Log
 
+## v1.1.0
+
+* Updated config and generate_actions template to rename connection variables because some of them were duplicated in other actions
+
+  Contributed by John Schoewe (Encore Technologies)
+
 ## v1.0.0
 
 * Drop Python 2.7 support

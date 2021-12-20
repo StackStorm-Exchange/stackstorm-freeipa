@@ -1,15 +1,15 @@
 ---
 connections:
   default:
-    server: abc123
-    username: xxx
-    password: yyy
+    ipa_server: abc123
+    ipa_username: xxx
+    ipa_password: yyy
   base:
-    server: abc
-    username: Administrator
-    password: PassworD!
+    ipa_server: abc
+    ipa_username: Administrator
+    ipa_password: PassworD!
   full:
-    server: server1
-    username: user1
-    password: pwd1
+    ipa_server: server1
+    ipa_username: user1
+    ipa_password: pwd1
     verify_ssl: false

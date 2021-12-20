@@ -10,15 +10,15 @@ connections:
 connection:
   type: "object"
   properties:
-    server:
+    ipa_server:
       type: string
       description: "IP/Hostname of the FreeIPA server"
       required: true
-    username:
+    ipa_username:
       type: string
       description: "Username to login to the FreeIPA server"
       required: true
-    password:
+    ipa_password:
       type: string
       description: "Password to login to the FreeIPA server"
       required: true

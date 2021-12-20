@@ -43,9 +43,9 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
     def test__resolve_connection_from_kwargs(self):
         action = self.get_action_instance(self.config_blank)
         kwargs = {'connection': None,
-                  'server': 'kwargs_server',
-                  'username': 'kwargs_user',
-                  'password': 'kwargs_password'}
+                  'ipa_server': 'kwargs_server',
+                  'ipa_username': 'kwargs_user',
+                  'ipa_password': 'kwargs_password'}
         connection_expected = copy.deepcopy(kwargs)
         connection_result = action._resolve_connection(**kwargs)
         self.assertEqual(connection_result, connection_expected)
@@ -53,9 +53,9 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
     def test__resolve_connection_from_kwargs_defaults(self):
         action = self.get_action_instance(self.config_blank)
         kwargs = {'connection': None,
-                  'server': 'kwargs_server',
-                  'username': 'kwargs_user',
-                  'password': 'kwargs_password'}
+                  'ipa_server': 'kwargs_server',
+                  'ipa_username': 'kwargs_user',
+                  'ipa_password': 'kwargs_password'}
         connection_expected = copy.deepcopy(kwargs)
         connection_result = action._resolve_connection(**kwargs)
         self.assertEqual(connection_result, connection_expected)
@@ -77,10 +77,10 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         connection_name = 'full'
         connection_config = self.config_good['connections'][connection_name]
         kwargs = {'connection': connection_name,
-                  'server': 'kwargs_server',
-                  'username': 'kwargs_user'}
+                  'ipa_server': 'kwargs_server',
+                  'ipa_username': 'kwargs_user'}
         connection_expected = copy.deepcopy(kwargs)
-        connection_expected['password'] = connection_config['password']
+        connection_expected['ipa_password'] = connection_config['ipa_password']
         connection_expected['verify_ssl'] = connection_config['verify_ssl']
         connection_result = action._resolve_connection(**kwargs)
         self.assertEqual(connection_result, connection_expected)
@@ -133,13 +133,13 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         mock_session.post.return_value = mock_response
         action.session = mock_session
 
-        url = 'https://{0}/ipa/session/login_password'.format(connection['server'])
-        headers = {"referer": 'https://{0}/ipa'.format(connection['server']),
+        url = 'https://{0}/ipa/session/login_password'.format(connection['ipa_server'])
+        headers = {"referer": 'https://{0}/ipa'.format(connection['ipa_server']),
                    "Content-Type": "application/x-www-form-urlencoded",
                    "Accept": "text/plain"}
         data = {
-            'user': connection['username'],
-            'password': connection['password']
+            'user': connection['ipa_username'],
+            'password': connection['ipa_password']
         }
 
         # execute
@@ -163,13 +163,13 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         mock_session.post.return_value = mock_response
         action.session = mock_session
 
-        url = 'https://{0}/ipa/session/login_password'.format(connection['server'])
-        headers = {"referer": 'https://{0}/ipa'.format(connection['server']),
+        url = 'https://{0}/ipa/session/login_password'.format(connection['ipa_server'])
+        headers = {"referer": 'https://{0}/ipa'.format(connection['ipa_server']),
                    "Content-Type": "application/x-www-form-urlencoded",
                    "Accept": "text/plain"}
         data = {
-            'user': connection['username'],
-            'password': connection['password']
+            'user': connection['ipa_username'],
+            'password': connection['ipa_password']
         }
 
         # execute
@@ -193,13 +193,13 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         mock_session.post.return_value = mock_response
         action.session = mock_session
 
-        url = 'https://{0}/ipa/session/login_password'.format(connection['server'])
-        headers = {"referer": 'https://{0}/ipa'.format(connection['server']),
+        url = 'https://{0}/ipa/session/login_password'.format(connection['ipa_server'])
+        headers = {"referer": 'https://{0}/ipa'.format(connection['ipa_server']),
                    "Content-Type": "application/x-www-form-urlencoded",
                    "Accept": "text/plain"}
         data = {
-            'user': connection['username'],
-            'password': connection['password']
+            'user': connection['ipa_username'],
+            'password': connection['ipa_password']
         }
 
         # execute
@@ -275,7 +275,7 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         action = self.get_action_instance(self.config_good)
         connection = self.config_good['connections']['base']
 
-        server = connection['server']
+        server = connection['ipa_server']
         session = "session123"
         method = 'hostgroup_show'
         args = IPA_COMMAND_ARGS_OPTIONS[method]['args']
@@ -326,7 +326,7 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         action = self.get_action_instance(self.config_good)
         connection = self.config_good['connections']['base']
 
-        server = connection['server']
+        server = connection['ipa_server']
         session = "session123"
         method = 'hostgroup_show'
         args = IPA_COMMAND_ARGS_OPTIONS[method]['args']
@@ -378,7 +378,7 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
         action = self.get_action_instance(self.config_good)
         connection = self.config_good['connections']['base']
 
-        server = connection['server']
+        server = connection['ipa_server']
         session = "session123"
         method = 'hostgroup_show'
         args = IPA_COMMAND_ARGS_OPTIONS[method]['args']
@@ -497,11 +497,11 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
     def test_run_login_existing_session(self):
         # setup
         action = self.get_action_instance(self.config_blank)
-        kwargs_dict = {'method': 'login',
+        kwargs_dict = {'ipa_method': 'login',
                        'session': 'session123',
-                       'server': 'server.domain.tld',
-                       'username': 'test',
-                       'password': 'abc123',
+                       'ipa_server': 'server.domain.tld',
+                       'ipa_username': 'test',
+                       'ipa_password': 'abc123',
                        'verify_ssl': False}
 
         # execute
@@ -515,11 +515,11 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
     def test_run_login_missing_session(self, mock__login):
         # setup
         action = self.get_action_instance(self.config_blank)
-        kwargs_dict = {'method': 'login',
-                       'server': 'server.domain.tld',
+        kwargs_dict = {'ipa_method': 'login',
+                       'ipa_server': 'server.domain.tld',
                        'session': None,
-                       'username': 'username123',
-                       'password': 'password123',
+                       'ipa_username': 'username123',
+                       'ipa_password': 'password123',
                        'verify_ssl': True}
         mock__login.return_value = 'session123'
 
@@ -535,11 +535,11 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
     def test_run_execute(self, mock__execute, mock__get_api_version):
         # setup
         action = self.get_action_instance(self.config_blank)
-        kwargs = {'method': 'host_add',
+        kwargs = {'ipa_method': 'host_add',
                   'session': 'session123',
-                  'server': 'server.domain.tld',
-                  'username': 'username123',
-                  'password': 'password123',
+                  'ipa_server': 'server.domain.tld',
+                  'ipa_username': 'username123',
+                  'ipa_password': 'password123',
                   'verify_ssl': True}
         mock__get_api_version.return_value = '1.234'
         mock__execute.return_value = (True, {'data': 'value'})
@@ -555,5 +555,5 @@ class TestActionsIpaAction(FreeIPABaseActionTestCase):
                                          'server.domain.tld',
                                          method='host_add',
                                          api_version='1.234',
-                                         username='username123',
-                                         password='password123')
+                                         ipa_username='username123',
+                                         ipa_password='password123')

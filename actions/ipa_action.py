@@ -10,9 +10,9 @@ urllib3.disable_warnings()
 requests.packages.urllib3.disable_warnings()  # pylint: disable=no-member
 
 CONNECTION_OPTIONS = [
-    'server',
-    'username',
-    'password',
+    'ipa_server',
+    'ipa_username',
+    'ipa_password',
     'verify_ssl',
 ]
 
@@ -118,9 +118,9 @@ class IpaAction(Action):
         :returns: login session token upon successful login
         :rtype: string
         """
-        server = connection['server']
-        username = connection['username']
-        password = connection['password']
+        server = connection['ipa_server']
+        username = connection['ipa_username']
+        password = connection['ipa_password']
 
         url = self._ipa_url(server, '/session/login_password')
         headers = {
@@ -233,18 +233,18 @@ class IpaAction(Action):
         connection = self._resolve_connection(**kwargs)
         self._validate_connection(connection)
         self.session.verify = connection['verify_ssl']
-        method = kwargs['method']
+        method = kwargs['ipa_method']
 
         if 'session' in kwargs and kwargs['session']:
-            server = kwargs['server']
+            server = kwargs['ipa_server']
             session = kwargs['session']
         else:
-            server = connection['server']
+            server = connection['ipa_server']
             session = self._login(connection)
 
-        del kwargs['server']
+        del kwargs['ipa_server']
         del kwargs['session']
-        del kwargs['method']
+        del kwargs['ipa_method']
         del kwargs['verify_ssl']
 
         if method == 'login':
