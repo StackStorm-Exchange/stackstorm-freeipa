@@ -14,8 +14,9 @@ parameters:
     type: string
   command:
     type: string
-  method:
-    type: string
+  # TODO: duplicate param
+  #method:
+  #  type: string
   object:
     type: string
   version:
