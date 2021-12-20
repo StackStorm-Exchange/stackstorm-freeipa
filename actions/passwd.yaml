@@ -11,9 +11,10 @@ parameters:
   principal:
     type: string
     required: true
-  password:
-    type: string
-    secret: True
+  # TODO: duplicate param
+  #password:
+  #  type: string
+  #  secret: True
   current_password:
     type: string
     required: true
